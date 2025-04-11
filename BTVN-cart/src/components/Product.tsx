@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductElement } from "../types/product";
+import { CartItem, ProductElement } from "../types/product";
 import { Link } from "react-router";
 import CartSidebar from "./Cart";
 import { useAppSelector, useAppDispatch } from "../redux";
@@ -18,7 +18,19 @@ const Product = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (savedCart.length > 0) {
+      savedCart.forEach((item: CartItem) => {
+        dispatch(addToCart(item));
+      });
+    }
+  }, [dispatch]);
 
+  // Lưu cart vào localStorage mỗi khi cart thay đổi
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   const handleAddToCart = (product: ProductElement) => {
     dispatch(addToCart(product));
     alert(`${product.title} has been added to cart!`);
