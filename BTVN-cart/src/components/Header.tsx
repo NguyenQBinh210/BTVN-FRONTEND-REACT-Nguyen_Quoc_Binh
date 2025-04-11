@@ -1,4 +1,5 @@
 
+import { Link } from "react-router";
 import NavBar from "./NavBar";
 
 const Header = () => {
@@ -9,12 +10,13 @@ const Header = () => {
       <div className="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
         <div className="flex flex-row items-center justify-between py-6">
           <div className="relative md:mt-8">
-            <a
-              href="#"
+            <Link
+              to="/product"
               className="text-lg relative z-50 font-bold tracking-widest text-gray-900 rounded-lg focus:outline-none"
             >
               Skilline
-            </a>
+            </Link>
+
             <svg
               className="h-11 z-40 absolute -top-2 -left-3"
               viewBox="0 0 79 79"
@@ -27,6 +29,7 @@ const Header = () => {
               />
             </svg>
           </div>
+          <h1>Please click on product</h1>
           <button className="rounded-lg md:hidden focus:outline-none">
             <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
               {
@@ -44,7 +47,6 @@ const Header = () => {
         >
           <NavBar />
         </div>
-          
       </div>
     </header>
   );

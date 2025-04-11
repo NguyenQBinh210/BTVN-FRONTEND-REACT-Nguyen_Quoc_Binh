@@ -6,6 +6,7 @@ const Layout = () => {
   return (
     <>
       <Header />
+      
       <div className="flex items-center justify-center min-h-[500px] bg-amber-50">
         <Outlet />
       </div>
